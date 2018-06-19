@@ -1,0 +1,11 @@
+<h1>コンテンツ一覧</h1>
+
+<div class="contents-index">
+  <% @contents.each do |content| %>
+  <div class="contents-index-item">
+    <%= link_to(content.title, "/contents/#{content.id}") %>
+  </div>
+  <% end %>
+</div>
+
+<%= link_to("新規作成", "/contents/new") %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  title: MyString
+  circle: 1
+  rating: 1
+  release_date: 2018-06-17
+  price: 1
+  cover_image: MyString
+  media: 1
+  event_first: 1
+
+two:
+  type: 
+  title: MyString
+  circle: 1
+  rating: 1
+  release_date: 2018-06-17
+  price: 1
+  cover_image: MyString
+  media: 1
+  event_first: 1
