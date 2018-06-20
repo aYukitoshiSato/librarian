@@ -1,28 +1,26 @@
 <h1><%= @content.title %></h1>
 
 <div class="collections-index">
-  <% @content.collections.order(No: :asc).each do |collection| %>
+  <% @content.collections.order(No: :asc).all.includes(:creator_belongs_to_collections).each do |collection| %>
     <div class="collections-index-item">
 
-      <% if collection.No == 0 %>
-        <h2>
-          <% if collection.creator_belongs_to_collections %>
-            <% collection.creator_belongs_to_collections.each do |cbtc| %>
-              <%= "#{cbtc.position.name}:#{cbtc.creator.name}" %>
-            <% end %>
-          <% end %>
-        </h2>
-
-      <% else %>
+      <% if collection.No != 0 %>
         <%= collection.No %>
         <%= collection.title %>
-        <div>
-          <% if collection.creator_belongs_to_collections %>
-            <% collection.creator_belongs_to_collections.each do |cbtc| %>
-              <%= "#{cbtc.position.name}:#{cbtc.creator.name}" %>
-            <% end %>
+      <% end %>
+
+      <% if collection.creator_belongs_to_collections %>
+        <% collection.creator_belongs_to_collections.each do |cbtc| %>
+          <% if collection.No == 0 %>
+            <h2>
+              <%= "#{cbtc.position}:#{cbtc.creator.name}" %>
+            </h2>
+          <% else %>
+            <div>
+              <%= "#{cbtc.position}:#{cbtc.creator.name}" %>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       <% end %>
 
     </div>

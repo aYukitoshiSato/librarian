@@ -7,7 +7,7 @@
     コレクション
     <input name="collection">
     役職
-    <input name="position">
+    <%= select :positions,:name,CreatorBelongsToCollection.positions.keys.to_a %>
     名前
     <input name="name">
   </div>
