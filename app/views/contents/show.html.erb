@@ -1,7 +1,7 @@
 <h1><%= @content.title %></h1>
 
 <div class="collections-index">
-  <% @content.collections.order(No: :asc).all.includes(:creator_belongs_to_collections).each do |collection| %>
+  <% @content.collections.order(No: :asc).includes(:creator_belongs_to_collections).each do |collection| %>
     <div class="collections-index-item">
 
       <% if collection.No != 0 %>
