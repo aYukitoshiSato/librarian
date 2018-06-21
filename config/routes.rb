@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   post "users/create" => "users#create"
   get "users/:id" => "users#show"
   get "signup" => "users#new"
+  get "signin" => "users#signin_form"
+  post "signin" => "users#signin"
+
 
   get "contents/index" => "contents#index"
   get "contents/new" => "contents#new"
