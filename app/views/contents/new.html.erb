@@ -2,13 +2,19 @@
   <p>タイトル</p>
   <%= f.text_field :title %>
   <%= f.select :form, Content.forms.keys.to_a, {} %>
-  <%= f.fields_for :collections do |fc| %>
+  <%= fields_for @collection do |fc| %>
+    <p>ナンバリング</p>
+    <%= fc.number_field :No %>
     <p>各タイトル</p>
     <%= fc.text_field :title %>
-    <%= fc.fields_for :creator_belongs_to_collections do |fcb| %>
+    <%= fields_for @cbtc do |fcb| %>
       <p>役職</p>
-      <%= fcb.select :position, CreatorBelongsToCollection.positions.keys.to_a, {}  %>
-  <%= f.submit %>
-  <% end %>
+      <%= fcb.select :position, CreatorBelongsToCollection.positions.keys.to_a, {}%>
+      <%= fields_for @creator do |fcr| %>
+        <p>名前</p>
+        <%= fcr.text_field :name %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
