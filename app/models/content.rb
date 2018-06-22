@@ -16,4 +16,5 @@ class Content < ApplicationRecord
   enum form:{other: 0, video: 1, audio: 2, book:3, game:4, goods: 5}
   validates :title, {presence: true}
   has_many :collections, dependent: :destroy
+  accepts_nested_attributes_for :collections
 end
