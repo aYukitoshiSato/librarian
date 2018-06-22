@@ -10,12 +10,16 @@ class ContentsController < ApplicationController
   def new
     @content = Content.new
     @content.collections.build
-    @content.collections.first.creator_belongs_to_collections.build
+    @content.collections.first.creators.build
+    @content.collections.first.creators.first.creator_belongs_to_collections.build
   end
 
   def create
     @content = Content.new(create_params)
     @content.save
+    @content.errors.full_messages.each do |message|
+      puts message
+    end
     redirect_to ("/contents/index")
 
   end
@@ -28,9 +32,13 @@ class ContentsController < ApplicationController
        :form,
        collections_attributes: [
          :title,
-         creator_belongs_to_collections_attributes: [:position]
+         :No,
+         creators_attributes: [
+           :name,
+           creator_belongs_to_collections_attributes: [:position]
          ]
-       )
+       ]
+     )
    end
 
   def edit
