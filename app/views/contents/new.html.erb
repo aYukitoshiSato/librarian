@@ -1,15 +1,6 @@
-<%= form_tag("/contents/create") do %>
+<%= form_for @content,:url => {:action => :create} do |f| %>
   タイトル
-  <input name="title">
-  <div>
-    No.
-    <input name="No">
-    コレクション
-    <input name="collection">
-    役職
-    <%= select :CreatorBelongsToCollection,:position,CreatorBelongsToCollection.positions.keys.to_a %>
-    名前
-    <input name="name">
-  </div>
-  <input type="submit" value="投稿">
+  <%= f.text_field :title %>
+  <%= f.select :form, Content.forms.keys.to_a, {} %>
+  <%= f.submit %>
 <% end %>

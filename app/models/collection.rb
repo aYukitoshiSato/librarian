@@ -9,5 +9,6 @@
 class Collection < ApplicationRecord
   belongs_to :content
   has_many :creator_belongs_to_collections, dependent: :destroy
+  has_many :creators, through: :creator_belongs_to_collections
 
 end
