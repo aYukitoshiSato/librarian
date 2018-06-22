@@ -8,6 +8,13 @@
     <p>各タイトル</p>
     <%= clf.text_field :title %>
 
+
+
+    <%= crf.fields_for :creator_belongs_to_collections do |cbf| %>
+      <p>役職</p>
+      <%= cbf.select :position, CreatorBelongsToCollection.positions.keys.to_a, {} %>
+
+
     <%= clf.fields_for :creators do |crf| %>
       <p>名前</p>
       <%= crf.text_field :name %>
