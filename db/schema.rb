@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_011716) do
+ActiveRecord::Schema.define(version: 2018_06_22_012330) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_011716) do
   end
 
   create_table "contents", force: :cascade do |t|
-    t.integer "form_id"
+    t.integer "form"
     t.string "title"
     t.integer "circle"
     t.integer "rating"

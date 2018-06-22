@@ -1,5 +1,5 @@
 # "id" integer NOT NULL PRIMARY KEY,
-# "form_id" integer DEFAULT NULL,
+# "form" integer DEFAULT NULL,
 # "title" varchar DEFAULT NULL,
 # "circle" integer DEFAULT NULL,
 # "rating" integer DEFAULT NULL,
@@ -12,6 +12,8 @@
 # "updated_at" datetime NOT NULL
 
 class Content < ApplicationRecord
+
+  enum form:{other: 0, video: 1, audio: 2, book:3, game:4, goods: 5}
   validates :title, {presence: true}
   has_many :collections, dependent: :destroy
 end
