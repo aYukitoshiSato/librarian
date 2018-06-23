@@ -11,7 +11,8 @@ class ContentsController < ApplicationController
     @content = Content.new
     @content.collections.build
     @content.collections.first.creators.build
-    @content.collections.first.creators.first.creator_belongs_to_collections.build
+    # @content.collections.first.positions.build
+    # @content.collections.first.creators.first.creator_belongs_to_collections.build
   end
 
   def create
@@ -35,7 +36,7 @@ class ContentsController < ApplicationController
          :No,
          creators_attributes: [
            :name,
-           creator_belongs_to_collections_attributes: [:position]
+           :position
          ]
        ]
      )

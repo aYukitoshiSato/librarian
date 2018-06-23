@@ -8,8 +8,7 @@
 
 class Collection < ApplicationRecord
   belongs_to :content
-  has_many :creator_belongs_to_collections, dependent: :destroy
-  has_many :creators, through: :creator_belongs_to_collections
-  accepts_nested_attributes_for :creator_belongs_to_collections
-  accepts_nested_attributes_for :creators
+  has_many :creator_belongs_to_collections, dependent: :destroy, inverse_of: :collection
+  has_many :creators, through: :creator_belongs_to_collections, inverse_of: :collections
+  accepts_nested_attributes_for :creators, allow_destroy: true
 end

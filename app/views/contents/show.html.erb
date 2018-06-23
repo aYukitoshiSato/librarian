@@ -9,16 +9,16 @@
         <%= collection.No %>
         <%= collection.title %>
       <% end %>
-<!-- collections.creatorsで中間テーブルの記述をせずに取得することも可能だが、positionが取得できない為、このような記述に -->
-      <% if collection.creator_belongs_to_collections %>
-        <% collection.creator_belongs_to_collections.each do |cbtc| %>
+
+      <% if collection.creators %>
+        <% collection.creators.each do |creator| %>
           <% if collection.No == 0 %>
             <h2>
-              <%= "#{cbtc.position}:#{cbtc.creator.name}" %>
+              <%= "#{creator.position}:#{creator.name}" %>
             </h2>
           <% else %>
             <div>
-              <%= "#{cbtc.position}:#{cbtc.creator.name}" %>
+              <%= "#{creator.position}:#{creator.name}" %>
             </div>
           <% end %>
         <% end %>

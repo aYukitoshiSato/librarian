@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_012330) do
+ActiveRecord::Schema.define(version: 2018_06_23_120749) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_012330) do
   end
 
   create_table "creator_belongs_to_collections", force: :cascade do |t|
-    t.integer "position"
+    t.integer "position_id"
     t.integer "creator_id"
     t.integer "collection_id"
     t.datetime "created_at", null: false
@@ -49,9 +49,16 @@ ActiveRecord::Schema.define(version: 2018_06_22_012330) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "position"
   end
 
   create_table "formats", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
