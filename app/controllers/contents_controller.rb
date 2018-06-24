@@ -32,8 +32,10 @@ class ContentsController < ApplicationController
        :title,
        :form,
        collections_attributes: [
+         :id,
          :title,
          :No,
+         :_destroy,
          creators_attributes: [
            :name,
            :position
