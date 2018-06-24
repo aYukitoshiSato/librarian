@@ -8,14 +8,23 @@
            <th>No.</th>
            <th>各タイトル</th>
            <th>Action</th>
+           <th>役職</th>
+           <th>名前</th>
+           <th>Action</th>
         </tr>
         <%= f.nested_fields_for :collections, wrapper_tag: :tr do |q| %>
             <td><%= q.number_field    :No,      class: 'form-control' %></td>
             <td><%= q.text_field      :title,   class: 'form-control' %></td>
             <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+            <%= q.nested_fields_for :creators do |c| %>
+                <td><%= c.text_field    :position,    class: 'form-control' %></td>
+                <td><%= c.text_field    :name,        class: 'form-control' %></td>
+                <td><%= c.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+            <% end %>
+            <%= q.add_nested_fields_link :creators, '作者を追加', class: 'btn btn-primary', role: 'button' %>
         <% end %>
     </tbody>
   </table>
-  <%= f.add_nested_fields_link :collections, 'Add new', class: 'btn btn-primary', role: 'button' %>
+  <%= f.add_nested_fields_link :collections, '各タイトルを追加', class: 'btn btn-primary', role: 'button' %>
   <%= f.submit %>
 <% end %>

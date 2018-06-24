@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_23_120749) do
+ActiveRecord::Schema.define(version: 2018_06_24_104228) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 2018_06_23_120749) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contents_lists", force: :cascade do |t|
+    t.integer "list_id"
+    t.integer "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "creator_belongs_to_collections", force: :cascade do |t|
     t.integer "position_id"
     t.integer "creator_id"
@@ -54,6 +61,13 @@ ActiveRecord::Schema.define(version: 2018_06_23_120749) do
 
   create_table "formats", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

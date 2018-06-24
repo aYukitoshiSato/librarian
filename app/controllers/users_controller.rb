@@ -8,20 +8,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(
-      name: params[:name],
-      email: params[:email],
-      birthday: params[:date],
-      password: params[:password]
-    )
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
-      ession[:user_id] = @user_id
+      session[:user_id] = @user_id
     else
       render('users/new')
     end
   end
+
+
 
   def signin_form
     @user = User.new
@@ -39,5 +36,16 @@ class UsersController < ApplicationController
       render("users/signin_form")
     end
   end
+
+  private
+
+   def user_params
+     params.require(:user).permit(
+       :name,
+       :email,
+       :birthday,
+       :password
+     )
+   end
 
 end

@@ -8,16 +8,16 @@
       <%= message %>
     </div>
   <% end %>
-  <%= form_tag("users/create") do %>
+  <%= form_for @user,:url => {:action => :create} do |f| %>
     <p>ユーザー名</p>
-    <input name="name" value="<%= @user.name %>" >
+    <%= f.text_field :name %>
     <p>Email</p>
-    <input name="email" value="<%= @user.email %>">
+    <%= f.text_field :email %>
     <p>誕生日</p>
-    <input type="date" name="date" value="<%= @user.birthday %>">
+    <%= f.date_field :birthday %>
     <p>パスワード</p>
-    <input type="password" name="password">
-    <input type="submit" value="新規登録">
+    <%= f.password_field :password %>
+    <%= f.submit %>
   <% end %>
 
 </div>

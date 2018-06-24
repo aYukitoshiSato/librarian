@@ -25,6 +25,10 @@ class ContentsController < ApplicationController
 
   end
 
+
+  def edit
+  end
+
   private
 
    def create_params
@@ -43,8 +47,5 @@ class ContentsController < ApplicationController
        ]
      )
    end
-
-  def edit
-  end
 
 end
