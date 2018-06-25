@@ -2,10 +2,10 @@
 
 <div class="contents-index">
   <% @contents.each do |content| %>
-  <div class="contents-index-item">
-    <%= link_to(content.title, "/contents/#{content.id}") %>
-    <%= link_to("リストに追加", "/lists/#{content.id}/add") %>
-  </div>
+    <div class="contents-index-item">
+      <%= link_to(content.title, "/contents/#{content.id}") %>
+      <%= link_to("リストに追加", "/lists/#{content.id}/add") %>
+    </div>
   <% end %>
 </div>
 
