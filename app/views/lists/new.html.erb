@@ -1,0 +1,17 @@
+<div>
+  新規リスト作成
+</div>
+
+<div>
+  <% @list.errors.full_messages.each do |message| %>
+    <div class="form-error">
+      <%= message %>
+    </div>
+  <% end %>
+  <%= form_for @list,:url => {:action => :create} do |f| %>
+    <p>リスト名</p>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+
+</div>

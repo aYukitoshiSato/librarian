@@ -7,3 +7,15 @@
 <div>
   <%= "birthday : #{@user.birthday}" %>
 </div>
+
+<h1>リスト一覧</h1>
+
+<div class="lists-index">
+  <% @lists.each do |list| %>
+  <div class="lists-index-item">
+    <%= link_to(list.name, "/lists/#{list.id}") %>
+  </div>
+  <% end %>
+</div>
+
+<%= link_to("リスト新規作成", "/lists/new") %>

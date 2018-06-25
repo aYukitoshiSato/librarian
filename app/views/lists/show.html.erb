@@ -1,0 +1,9 @@
+<h1><%= "リスト:#{@list.name}" %></h1>
+
+<div class="contents-index">
+  <% @list_contents.each do |content| %>
+  <div class="contents-index-item">
+    <%= link_to(content.title, "/contents/#{content.id}") %>
+  </div>
+  <% end %>
+</div>

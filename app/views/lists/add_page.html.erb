@@ -1,0 +1,4 @@
+<%= form_tag ("/lists/#{params[:id]}/add") do %>
+  <%= collection_select :contents_list, :list_id, List.where(user_id: session[:user_id]), :id, :name %>
+  <input type="submit" value="追加">
+<% end %>

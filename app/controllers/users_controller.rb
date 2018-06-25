@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
+    @lists = List.where(user_id: params[:id])
   end
 
   def new
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
-      session[:user_id] = @user_id
+      session[:user_id] = @user.id
     else
       render('users/new')
     end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   def signin
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user_id
+      session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/users/#{@user.id}")
     else
@@ -35,6 +36,12 @@ class UsersController < ApplicationController
       @email = params[:email]
       render("users/signin_form")
     end
+  end
+
+  def signout
+    session[:user_id] = nil
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/signin")
   end
 
   private

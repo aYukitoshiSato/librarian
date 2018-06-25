@@ -41,8 +41,10 @@ class ContentsController < ApplicationController
          :No,
          :_destroy,
          creators_attributes: [
+           :id,
            :name,
-           :position
+           :position,
+           :_destroy
          ]
        ]
      )

@@ -15,9 +15,15 @@
       </div>
       <div class="header-list">
         <ul>
-          <li><%= link_to("作品データベース", "/contents/index") %></li>
-          <li><%= link_to("新規登録", "/signup") %></li>
-          <li><%= link_to("ログイン", "/signin") %></li>
+          <% if session[:user_id] %>
+            <% login_user = User.find_by(id: session[:user_id]) %>
+            <li><%= link_to("ログインユーザー:#{login_user.name}", "/users/#{login_user.id}") %></li>
+            <li><%= link_to("作品データベース", "/contents/index") %></li>
+            <li><%= link_to("ログアウト", "/signout", {method: :post}) %></li>
+          <% else %>
+            <li><%= link_to("新規登録", "/signup") %></li>
+            <li><%= link_to("ログイン", "/signin") %></li>
+          <% end %>
         </ul>
       </div>
     </div>
