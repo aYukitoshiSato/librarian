@@ -9,8 +9,9 @@ class ContentsController < ApplicationController
 
   def new
     @content = Content.new
-    @content.collections.build
-    @content.collections.first.creators.build
+    @collection = @content.collections.build
+    @creator = @collection.creators.build
+
   end
 
   def create
