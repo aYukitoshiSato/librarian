@@ -25,3 +25,7 @@
     </div>
   <% end %>
 </div>
+
+<li><%= link_to("編集", "/contents/#{@content.id}/edit") %></li>
+
+<li><%= link_to("削除", "/contents/#{@content.id}/destroy", method: :delete, data: {confirm: "本当に削除しますか？"}) %></li>

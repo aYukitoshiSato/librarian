@@ -29,9 +29,20 @@ class ListsController < ApplicationController
     @contents_list.errors.full_messages.each do |message|
       puts message
     end
-
   end
 
+
+  def destroy
+    @list = List.find_by(id: params[:id])
+    @list.destroy
+    redirect_to ("/users/#{session[:user_id]}")
+  end
+
+  def remove
+    @contents_list = ContentsList.find_by(content_id: params[:content_id],list_id: params[:list_id])
+    @contents_list.destroy
+    redirect_to ("/lists/#{params[:list_id]}")
+  end
 
   private
 

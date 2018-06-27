@@ -4,8 +4,12 @@
   <% @list_contents.each do |content| %>
   <div class="contents-index-item">
     <%= link_to(content.title, "/contents/#{content.id}") %>
+<%= link_to("リストから削除", "/lists/#{@list.id}/#{content.id}/remove", method: :post, data: {confirm: "本当に削除しますか？"}) %>
+
   </div>
   <% end %>
 </div>
 
 <li><%= link_to("作品を追加", "/contents/index") %></li>
+
+<li><%= link_to("リストを削除", "/lists/#{@list.id}/destroy", method: :delete, data: {confirm: "本当に削除しますか？"}) %></li>

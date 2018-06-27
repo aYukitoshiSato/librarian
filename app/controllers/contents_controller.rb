@@ -15,7 +15,7 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = Content.new(create_params)
+    @content = Content.new(content_params)
     @content.save
     @content.errors.full_messages.each do |message|
       puts message
@@ -26,11 +26,30 @@ class ContentsController < ApplicationController
 
 
   def edit
+    @content = Content.find_by(id: params[:id])
+
+    @collection = @content.collections.build
+    @creator = @collection.creators.build
+  end
+
+  def update
+    @content = Content.find_by(id: params[:id])
+    @content.update_attributes(content_params)
+    @content.errors.full_messages.each do |message|
+      puts message
+    end
+    redirect_to ("/contents/index")
+  end
+
+  def destroy
+    @content = Content.find_by(id: params[:id])
+    @content.destroy
+    redirect_to ("/contents/index")
   end
 
   private
 
-   def create_params
+   def content_params
      params.require(:content).permit(
        :title,
        :form,
