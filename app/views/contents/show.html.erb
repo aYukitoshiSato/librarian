@@ -2,7 +2,7 @@
 <p><%= @content.form %></p>
 
 <div class="collections-index">
-  <% @content.collections.order(No: :asc).includes(:creator_belongs_to_collections).each do |collection| %>
+  <% @content.collections.order(No: :asc).includes(:creator_belongs_to_collections).includes(:creators).each do |collection| %>
     <div class="collections-index-item">
 
       <% if collection.No != 0 %>
@@ -10,17 +10,15 @@
         <%= collection.title %>
       <% end %>
 
-      <% if collection.creators %>
-        <% collection.creators.each do |creator| %>
-          <% if collection.No == 0 %>
-            <h2>
-              <%= "#{creator.position}:#{creator.name}" %>
-            </h2>
-          <% else %>
-            <div>
-              <%= "#{creator.position}:#{creator.name}" %>
-            </div>
-          <% end %>
+      <% collection.creators.each do |creator| %>
+        <% if collection.No == 0 %>
+          <h2>
+            <%= "#{creator.position}:#{creator.name}" %>
+          </h2>
+        <% else %>
+          <div>
+            <%= "#{creator.position}:#{creator.name}" %>
+          </div>
         <% end %>
       <% end %>
 
