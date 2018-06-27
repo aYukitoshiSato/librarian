@@ -6,7 +6,7 @@ ruby '2.5.1'
 gem "jquery-rails"
 
 #入力フォーム増やしたり減らしたりするやつ
-gem 'nested_form_fields'
+gem "nested_form"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'

@@ -1,4 +1,4 @@
-<%= form_for @content,:url => {:action => :create} do |f| %>
+<%= nested_form_for @content,:url => {:action => :create}  do |f| %>
 <p>タイトル</p>
 <%= f.text_field :title %>
 <%= f.select :form, Content.forms.keys.to_a, {} %>
@@ -12,19 +12,19 @@
       <th>名前</th>
       <th>Action</th>
     </tr>
-    <%= f.nested_fields_for :collections, wrapper_tag: :tr do |q| %>
+    <%= f.fields_for :collections do |q| %>
       <td><%= q.number_field :No, class: 'form-control' %></td>
       <td><%= q.text_field :title, class: 'form-control' %></td>
-      <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
-      <%= q.nested_fields_for :creators do |c| %>
+      <td><%= q.link_to_remove "Delete" %></td>
+      <%= q.fields_for :creators do |c| %>
         <td><%= c.text_field :position, class: 'form-control' %></td>
         <td><%= c.text_field :name, class: 'form-control' %></td>
-        <td><%= c.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
+        <td><%= c.link_to_remove "Delete" %></td>
       <% end %>
-      <td><%= q.add_nested_fields_link :creators, '作者を追加', class: 'btn btn-primary', role: 'button' %></td>
+      <td><%= q.link_to_add "作者を追加", :creators %></td>
     <% end %>
   </tbody>
 </table>
-<%= f.add_nested_fields_link :collections, '各タイトルを追加', class: 'btn btn-primary', role: 'button' %>
+<%= f.link_to_add "各タイトルを追加", :collections %>
 <%= f.submit %>
 <% end %>
