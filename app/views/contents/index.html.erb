@@ -6,11 +6,11 @@
     <% @contents.each do |content| %>
       <div class="contents-index-item">
         <%= link_to(content.title, "/contents/#{content.id}") %>
-        <%= link_to("リストに追加", "/lists/#{content.id}/add") %>
+        <%= link_to("リストに追加", "/lists/#{content.id}/add", class: "square_btn_s post_btn") %>
       </div>
     <% end %>
   </div>
 
-  <%= link_to("新規作成", "/contents/new") %>
+  <p><%= link_to("新規作成", "/contents/new", class: "square_btn normal_btn") %></p>
 
 </div>

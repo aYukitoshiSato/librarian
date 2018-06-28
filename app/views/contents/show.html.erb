@@ -28,8 +28,12 @@
     <% end %>
   </div>
 
-  <%= link_to("編集", "/contents/#{@content.id}/edit") %>
-
-  <%= link_to("削除", "/contents/#{@content.id}/destroy", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
-
+  <p>
+    <%= link_to("編集", "/contents/#{@content.id}/edit",
+      class: "square_btn normal_btn") %>
+    <%= link_to("削除", "/contents/#{@content.id}/destroy",
+      method: :delete,
+      class: "square_btn del_btn",
+      data: {confirm: "本当に削除しますか？"}) %>
+  </p>
 </div>

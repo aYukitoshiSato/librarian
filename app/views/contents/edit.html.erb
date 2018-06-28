@@ -14,21 +14,21 @@
       <p>
         No.<%= q.number_field :No %>
         タイトル:<%= q.text_field :title %>
-        <%= q.link_to_remove "コンテンツ欄を削除" %>
+        <%= q.link_to_remove "コンテンツ欄を削除", class: "square_btn_s del_btn" %>
       </p>
       <div class="creators-form">
       <%= q.fields_for :creators do |c| %>
         <p>
           役職:<%= c.text_field :position %>
           名前:<%= c.text_field :name %>
-          <%= c.link_to_remove "作者欄を削除" %>
+          <%= c.link_to_remove "作者欄を削除" , class: "square_btn_s del_btn"%>
         </p>
       <% end %>
-      <p><%= q.link_to_add "作者欄を追加", :creators %></p>
+      <p><%= q.link_to_add "作者欄を追加", :creators, class: "square_btn_s normal_btn" %></p>
       </div>
     <% end %>
 
-    <p><%= f.link_to_add "コンテンツ欄を追加", :collections %></p>
+    <p><%= f.link_to_add "コンテンツ欄を追加", :collections,class: "square_btn_s normal_btn" %></p>
     <%= f.submit %>
   <% end %>
 

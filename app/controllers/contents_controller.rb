@@ -33,6 +33,7 @@ class ContentsController < ApplicationController
 
     @collection = @content.collections.build
     @creator = @collection.creators.build
+
   end
 
   def update

@@ -2,10 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+body {
+  color: #2d3133;
+  background-color: #f5f8fa;
+  margin: 0;
+  min-height: 1vh;
+}
+
+.main {
+  padding: 64px;
+}
+
 .flash {
   padding: 10px 0;
   color: white;
-  background: rgb(251, 170, 88);
+  background: #fbaa58;
   text-align: center;
   position: absolute;
   top: 64px;
@@ -36,15 +48,8 @@
   color: #fff;
 }
 
-body {
-  color: #2d3133;
-  background-color: #f5f8fa;
-  margin: 0;
-  min-height: 1vh;
-}
-
-.main {
-  padding: 64px;
+.header-list ul {
+  margin: 0px;
 }
 
 .header-list li {
@@ -73,4 +78,55 @@ body {
   color: white;
   font-size: 22px;
   line-height: 64px;
+}
+
+.square_btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.square_btn_s {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: .4s;
+  font-size: 13px;
+}
+
+.contents-index-item .square_btn_s {
+  margin: 5px;
+}
+
+.del_btn {
+    color: #800000;
+    border: solid 2px #800000;
+}
+
+.del_btn:hover {
+    background: #800000;
+    color: white;
+}
+
+.normal_btn {
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+}
+
+.normal_btn:hover {
+    background: #67c5ff;
+    color: white;
+}
+
+.post_btn {
+    color: #fbaa58;
+    border: solid 2px #fbaa58;
+}
+
+.post_btn:hover {
+    background: #fbaa58;
+    color: white;
 }
