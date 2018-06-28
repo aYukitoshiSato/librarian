@@ -1,12 +1,16 @@
-<h1>コンテンツ一覧</h1>
+<div class="main">
 
-<div class="contents-index">
-  <% @contents.each do |content| %>
-    <div class="contents-index-item">
-      <%= link_to(content.title, "/contents/#{content.id}") %>
-      <%= link_to("リストに追加", "/lists/#{content.id}/add") %>
-    </div>
-  <% end %>
+  <h1>コンテンツ一覧</h1>
+
+  <div class="contents-index">
+    <% @contents.each do |content| %>
+      <div class="contents-index-item">
+        <%= link_to(content.title, "/contents/#{content.id}") %>
+        <%= link_to("リストに追加", "/lists/#{content.id}/add") %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to("新規作成", "/contents/new") %>
+
 </div>
-
-<%= link_to("新規作成", "/contents/new") %>

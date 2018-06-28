@@ -16,12 +16,15 @@ class ContentsController < ApplicationController
 
   def create
     @content = Content.new(content_params)
-    @content.save
-    @content.errors.full_messages.each do |message|
-      puts message
+    if @content.save
+      flash[:notice] = "データを登録しました"
+      redirect_to ("/contents/index")
+    else
+      render("contents/new")
     end
-    redirect_to ("/contents/index")
-
+    # @content.errors.full_messages.each do |message|
+    #   puts message
+    # end
   end
 
 
@@ -34,17 +37,20 @@ class ContentsController < ApplicationController
 
   def update
     @content = Content.find_by(id: params[:id])
-    @content.update_attributes(content_params)
-    @content.errors.full_messages.each do |message|
-      puts message
+    if @content.update_attributes(content_params)
+      flash[:notice] = "データを更新しました"
+      redirect_to ("/contents/index")
+    else
+      render("contents/edit")
     end
-    redirect_to ("/contents/index")
   end
 
   def destroy
     @content = Content.find_by(id: params[:id])
-    @content.destroy
-    redirect_to ("/contents/index")
+    if @content.destroy
+      flash[:notice] = "データを削除しました"
+      redirect_to ("/contents/index")
+    end
   end
 
   private

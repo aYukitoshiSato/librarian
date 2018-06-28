@@ -1,21 +1,28 @@
-<div>
-  <%= "name : #{@user.name}" %>
-</div>
-<div>
-  <%= "email : #{@user.email}" %>
-</div>
-<div>
-  <%= "birthday : #{@user.birthday}" %>
-</div>
+<div class="main">
 
-<h1>リスト一覧</h1>
-
-<div class="lists-index">
-  <% @lists.each do |list| %>
-  <div class="lists-index-item">
-    <%= link_to(list.name, "/lists/#{list.id}") %>
+  <div>
+    <%= "name : #{@user.name}" %>
   </div>
-  <% end %>
-</div>
+  <div>
+    <%= "email : #{@user.email}" %>
+  </div>
+  <div>
+    <%= "birthday : #{@user.birthday}" %>
+  </div>
 
-<%= link_to("リスト新規作成", "/lists/new") %>
+  <h1>リスト一覧</h1>
+
+  <div class="lists-index">
+    <% @lists.each do |list| %>
+      <div class="lists-index-item">
+        <%= link_to(list.name, "/lists/#{list.id}") %>
+      </div>
+    <% end %>
+  </div>
+
+  <p>
+    <%= link_to("リスト新規作成", "/lists/new") %>
+  </p>
+
+
+</div>

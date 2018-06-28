@@ -1,31 +1,35 @@
-<h1><%= @content.title %></h1>
-<p><%= @content.form %></p>
+<div class="main">
 
-<div class="collections-index">
-  <% @content.collections.order(No: :asc).includes(:creator_belongs_to_collections).includes(:creators).each do |collection| %>
-    <div class="collections-index-item">
+  <h1><%= @content.title %></h1>
+  <p><%= @content.form %></p>
 
-      <% if collection.No != 0 %>
-        <%= collection.No %>
-        <%= collection.title %>
-      <% end %>
+  <div class="collections-index">
+    <% @content.collections.order(No: :asc).includes(:creator_belongs_to_collections).includes(:creators).each do |collection| %>
+      <div class="collections-index-item">
 
-      <% collection.creators.each do |creator| %>
-        <% if collection.No == 0 %>
-          <h2>
-            <%= "#{creator.position}:#{creator.name}" %>
-          </h2>
-        <% else %>
-          <div>
-            <%= "#{creator.position}:#{creator.name}" %>
-          </div>
+        <% if collection.No != 0 %>
+          <%= collection.No %>.
+          <%= collection.title %>
         <% end %>
-      <% end %>
+        <div class="creators-show">
+        <% collection.creators.each do |creator| %>
+          <% if collection.No == 0 %>
+            <h2>
+              <%= "#{creator.position}:#{creator.name}" %>
+            </h2>
+          <% else %>
+            <div>
+              <%= "#{creator.position}:#{creator.name}" %>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-    </div>
-  <% end %>
+  <%= link_to("編集", "/contents/#{@content.id}/edit") %>
+
+  <%= link_to("削除", "/contents/#{@content.id}/destroy", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+
 </div>
-
-<li><%= link_to("編集", "/contents/#{@content.id}/edit") %></li>
-
-<li><%= link_to("削除", "/contents/#{@content.id}/destroy", method: :delete, data: {confirm: "本当に削除しますか？"}) %></li>

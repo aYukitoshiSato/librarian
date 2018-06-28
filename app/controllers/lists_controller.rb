@@ -6,8 +6,10 @@ class ListsController < ApplicationController
   def create
     @list = List.new(create_params)
     @list.user_id = session[:user_id]
-    @list.save
-    redirect_to ("/users/#{session[:user_id]}")
+    if @list.save
+      flash[:notice] = "リストを作成しました"
+      redirect_to ("/users/#{session[:user_id]}")
+    end
   end
 
   def show
@@ -34,14 +36,18 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find_by(id: params[:id])
-    @list.destroy
-    redirect_to ("/users/#{session[:user_id]}")
+    if @list.destroy
+      flash[:notice] = "リストを削除しました"
+      redirect_to ("/users/#{session[:user_id]}")
+    end
   end
 
   def remove
     @contents_list = ContentsList.find_by(content_id: params[:content_id],list_id: params[:list_id])
-    @contents_list.destroy
-    redirect_to ("/lists/#{params[:list_id]}")
+    if @contents_list.destroy
+      flash[:notice] = "リストから削除しました"
+      redirect_to ("/lists/#{params[:list_id]}")
+    end
   end
 
   private

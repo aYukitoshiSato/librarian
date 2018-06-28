@@ -1,23 +1,26 @@
-<div>
-  新規会員登録
-</div>
+<div class="main">
 
-<div>
-  <% @user.errors.full_messages.each do |message| %>
-    <div class="form-error">
-      <%= message %>
-    </div>
-  <% end %>
-  <%= form_for @user,:url => {:action => :create} do |f| %>
-    <p>ユーザー名</p>
-    <%= f.text_field :name %>
-    <p>Email</p>
-    <%= f.text_field :email %>
-    <p>誕生日</p>
-    <%= f.date_field :birthday %>
-    <p>パスワード</p>
-    <%= f.password_field :password %>
-    <%= f.submit %>
-  <% end %>
+  <div>
+    新規会員登録
+  </div>
+
+  <div>
+    <% @user.errors.full_messages.each do |message| %>
+      <div class="form-error">
+        <%= message %>
+      </div>
+    <% end %>
+    <%= form_for @user,:url => {:action => :create} do |f| %>
+      <p>ユーザー名</p>
+      <%= f.text_field :name %>
+      <p>Email</p>
+      <%= f.text_field :email %>
+      <p>誕生日</p>
+      <%= f.date_field :birthday %>
+      <p>パスワード</p>
+      <%= f.password_field :password %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 
 </div>
