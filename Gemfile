@@ -5,6 +5,11 @@ ruby '2.5.1'
 
 gem "jquery-rails"
 
+group :production do
+  gem 'pg', groups: %w(production), require: false
+  gem 'rails_12factor', '0.0.2'
+end
+
 #入力フォーム増やしたり減らしたりするやつ
 gem "nested_form"
 
@@ -68,8 +73,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
-
-group :production do
-  gem 'pg', groups: %w(production), require: false
-  gem 'rails_12factor', '0.0.2'
-end
