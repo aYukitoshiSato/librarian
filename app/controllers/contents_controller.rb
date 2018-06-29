@@ -22,9 +22,6 @@ class ContentsController < ApplicationController
     else
       render("contents/new")
     end
-    # @content.errors.full_messages.each do |message|
-    #   puts message
-    # end
   end
 
 
