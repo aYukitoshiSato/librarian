@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 gem "jquery-rails"
 
-gem 'sqlite3', groups: %w(test development), require: false
+
 gem 'pg', groups: %w(production), require: false
 
 group :production do
