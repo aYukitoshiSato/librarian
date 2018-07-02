@@ -6,7 +6,7 @@ ruby '2.5.1'
 gem "jquery-rails"
 
 
-gem 'pg', groups: %w(production), require: false
+gem 'pg'
 
 group :production do
 
