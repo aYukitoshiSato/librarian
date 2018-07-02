@@ -1,6 +1,4 @@
-
-
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
   database: rails_dev
@@ -8,3 +6,12 @@ development:
   username: rails_user
   password: hilite88
   host: localhost
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  database: d11e5op9jje3ns
+  username: dsavgunfsjqxqq
+  password: 27a3d83d80ccc529c4b5a5cd065b01ce98ef610e6a345136cbaa4e2604966e65
