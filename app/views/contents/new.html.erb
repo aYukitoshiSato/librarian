@@ -6,6 +6,25 @@
   <% end %>
 
   <%= nested_form_for @content,:url => {:action => :create} do |f| %>
+
+    <p>パッケージタイトル</p>
+    <%= f.text_field :title %>
+    <%= f.select :form, Content.forms.keys.to_a, {} %>
+
+    <%= f.fields_for :collections do |q| %>
+      <%= q.hidden_field :No, value:0 %>
+      <div class="creators-form">
+      <%= q.fields_for :creators do |c| %>
+        <p>
+          役職:<%= c.text_field :position %>
+          名前:<%= c.text_field :name %>
+          <%= c.link_to_remove "作者欄を削除" , class: "square_btn_s del_btn"%>
+        </p>
+      <% end %>
+      <p><%= q.link_to_add "作者欄を追加", :creators, class: "square_btn_s normal_btn" %></p>
+      </div>
+    <% end %>
+
     <%= render :partial => "form", :locals => { f: f } %>
   <% end %>
 

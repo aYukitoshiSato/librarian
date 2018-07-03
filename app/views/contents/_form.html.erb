@@ -1,7 +1,4 @@
-<p>パッケージタイトル</p>
-<%= f.text_field :title %>
-<%= f.select :form, Content.forms.keys.to_a, {} %>
-<p>パッケージに作者を紐づける場合はNo.を0に、コンテンツタイトルを空にして登録してください</p>
+<p>パッケージ内容</p>
 <%= f.fields_for :collections do |q| %>
   <p>
     No.<%= q.number_field :No %>

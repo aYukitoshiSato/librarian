@@ -6,6 +6,13 @@
   <% end %>
 
   <%= nested_form_for @content,:url => {:action => :update}, html: {id: params[:id]} do |f| %>
+
+    <p>パッケージタイトル</p>
+    <%= f.text_field :title %>
+    <%= f.select :form, Content.forms.keys.to_a, {} %>
+
+    <p>パッケージに直接作者を紐づける場合はNoを0に、タイトルを空白にしてください</p>
+
     <%= render :partial => "form", :locals => { f: f } %>
   <% end %>
 
