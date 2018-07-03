@@ -13,7 +13,7 @@
     <%= form_for @list,:url => {:action => :create} do |f| %>
       <p>リスト名</p>
       <%= f.text_field :name %>
-      <%= f.submit %>
+      <%= f.submit :class=>"square_btn post_btn" %>
     <% end %>
 
   </div>
