@@ -5,7 +5,7 @@
   <div class="contents-index">
     <% @contents.each do |content| %>
       <div class="contents-index-item">
-        <%= link_to(content.title, "/contents/#{content.id}") %>
+        <%= link_to("#{content.form} : #{content.title}", "/contents/#{content.id}") %>
         <%= link_to("リストに追加", "/lists/#{content.id}/add", class: "square_btn_s post_btn") %>
       </div>
     <% end %>
