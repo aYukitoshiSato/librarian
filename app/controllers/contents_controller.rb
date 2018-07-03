@@ -27,10 +27,6 @@ class ContentsController < ApplicationController
 
   def edit
     @content = Content.find_by(id: params[:id])
-
-    @collection = @content.collections.build
-    @creator = @collection.creators.build
-
   end
 
   def update

@@ -12,12 +12,11 @@ class Collection < ApplicationRecord
   has_many :creators, through: :creator_belongs_to_collections, inverse_of: :collections
   accepts_nested_attributes_for :creators, allow_destroy: true, :reject_if => :all_blank
 
-  def creators_attributes=(creator_attributes)
-    creator_attributes.values.each do |creator_attribute|
-      creator = Creator.find_or_create_by(name: creator_attribute[:name], position: creator_attribute[:position])
-      self.creators << creator
-    end
-  end
-
+  # def creators_attributes=(creator_attributes)
+  #   creator_attributes.values.each do |creator_attribute|
+  #     creator = Creator.find_or_create_by(name: creator_attribute[:name], position: creator_attribute[:position])
+  #     self.creators << creator
+  #   end
+  # end
 
 end
