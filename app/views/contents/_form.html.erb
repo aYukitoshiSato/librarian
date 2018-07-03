@@ -1,11 +1,11 @@
-<p>タイトル</p>
+<p>パッケージタイトル</p>
 <%= f.text_field :title %>
 <%= f.select :form, Content.forms.keys.to_a, {} %>
-
+<p>パッケージに作者を紐づける場合はNo.を0に、コンテンツタイトルを空にして登録してください</p>
 <%= f.fields_for :collections do |q| %>
   <p>
     No.<%= q.number_field :No %>
-    タイトル:<%= q.text_field :title %>
+    コンテンツタイトル:<%= q.text_field :title %>
     <%= q.link_to_remove "コンテンツ欄を削除", class: "square_btn_s del_btn" %>
   </p>
   <div class="creators-form">

@@ -28,6 +28,8 @@
     <% end %>
   </div>
 
+  <p><%= link_to("リストに追加", "/lists/#{@content.id}/add", class: "square_btn post_btn") %></p>
+
   <p>
     <%= link_to("編集", "/contents/#{@content.id}/edit",
       class: "square_btn normal_btn") %>
